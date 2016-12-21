@@ -2,6 +2,8 @@
 \thispagestyle{chapterBeginStyle}
 \label{chapter_logic}
 
+\noindent{\LARGE Inicjalizacja gry}\smallskip
+
 W tym rozdziale omówię w jaki sposób działa silnik gry i mechanizmy umożliwiające poprawne działanie wszystkich jej aspektów.
 
 Głównym obiektem w grze jest obiekt klasy Game, inicjalizujący wszystkie inne obiekty oraz synchronizujący ich działanie.
@@ -26,7 +28,7 @@ Po wczytaniu danych, następuje rozpoczęcie gry. Ustawiany jest timer, co 20 ms
 Po skończeniu inicjalizacji gry, okresowo wywołują się funkcje odpowiedzialne za logikę gry, opisaną poniżej, oraz za grafikę, opisaną w rozdziale \ref{chapter_graphics}.
 \newpage
 
-\noindent{\LARGE Menu gry}
+\noindent{\LARGE Menu gry}\smallskip
 
 \begin{wrapfigure}{r}{0.39\textwidth}
 	\centering
@@ -43,7 +45,7 @@ Większo\'sć klas w projekcie ma funkcje ''update'' oraz ''draw'', służące o
 
 Niezależnie od aktualizacji działa sterowanie w grze. Jest ono przekazywane na dwa sposoby: jako tablica wci\'sniętych klawiszy przechowywana w odpowiednim obiekcie oraz zdarzenie wysyłane do aktualnego menu. To drugie służy tylko do sterowania w menu, i nie jest używane we wła\'sciwej grze poza opcją włączenia menu pauzy. Tablica klawiszy służy natomiast podczas aktualizacji w samej grze, i zawiera informację typu boolean dla każdego klawisza, mówiącą czy jest on wci\'snięty.\bigskip
 
-\noindent{\LARGE Aktualizacja w trakcie poziomu}
+\noindent{\LARGE Aktualizacja w trakcie poziomu}\smallskip
 
 Aktualizacja w trakcie poziomu zaczyna się od aktualizacji obiektu danego poziomu, zazwyczaj powoduje to pojawienie się przeciwników oraz kończenie misji przy spełnieniu odpowiedniego warunku. Każdy poziom ma własna klasę reprezentującą go.\\
 Każda klasa poziomu zawiera przypisane do niego: \begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
