@@ -1,0 +1,68 @@
+\chapter{System wykrywania kolizji}
+\thispagestyle{chapterBeginStyle}
+\label{chapter_collission_detection}
+
+W tym rodziale opiszę jak działają różne systemy wykrywania kolizji i w jaki sposób niektóre z nich zostały użyte w projekcie.\\
+
+\noindent Są dwa modele wykrywania kolizji:
+\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+	\item ciągły, w którym ustalamy dokładny moment i miejsce zderzenia
+	\item dyskretny, w którym to czy obiekty się zderzyły sprawdzamy co jaki\'s czas
+\end{itemize}\bigskip
+
+\noindent{\LARGE Wykrywanie kolizji w modelu ciągłym}
+
+Ten model wykrywania kolizji jest zazwyczaj używany tam, gdzie jest wymagana bardzo duża dokładno\'sć w obliczaniu miejsca i czasu zderzenia. W obliczeniach związanych z tym modelem często używa się interpolacji i metod numerycznych, przez co jest zbyt czasochłonny aby użyć go w progamach działających w czasie rzeczywistym, je\'sli trzeba takie obliczenia wykonać na wielu obiektach. Najczę\'sciej używa się go w symulacjach i modelach fizycznych, a bardzo rzadko w grach. Często model taki musi uwzględniać informacje o parametrach fizycznych obiektów takich jak ich elastyczno\'sć, oraz to jak obiekt będzie się poruszał według zasad fizyki.\\
+
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.8\textwidth]{collission_detection_continuous}
+	\caption{Wykrywanie kolizji w modelu ciągłym, punkt wej\'scia dla t=60.947, punkt wyj\'scia dla t=66.563}
+\end{figure}
+\newpage
+\noindent{\LARGE Wykrywanie kolizji w modelu dyskretnym}
+
+Ten model wykrywania kolizji jest używany wszędzie, gdzie nie jest wymagana taka dokładno\'sć jak przy trybie ciągłym. Polega on na sprawdzaniu czy obiekty kolidują co jaki\'s okres czasu, zazwyczaj co cykl obliczeń zmieniających położenie obiektów. Jest dużo prostszy i wymaga dużo mniej obliczeń, dlatego mozna go używać w czasie rzeczywistym na wielu obiektach naraz. Najczę\'sciej jest on używany w grach albo prostych symulacjach, niewymagających dużej dokładno\'sci. Do algorytmów używających tego modelu nie trzeba też wysyłać tylu informacji, wystarczy podać mu listę modeli, na których chcemy sprawdzić, czy zaszły zderzenia.\\
+
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.8\textwidth]{collission_detection_discrete}
+	\caption{Wykrywanie kolizji w trybie dyskretnym, zderzenie następuje między klatkami 61 i 66}
+\end{figure}
+
+Jego minusem jest jednak to że prędko\'sci obiektów muszą być dopasowane do ich wielko\'sci, je\'sli mały obiekt porusza się bardzo szybko to zderzenie może nie zaj\'sć, ponieważ w jednym cyklu obliczeń obiekt będzie całkowicie przed, a w drugim całkowicie za przeszkodą.\\
+
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.8\textwidth]{collission_detection_discrete_problem}
+	\caption{Problem z wykrywaniem kolizji w trybie dyskretnym, w takim przypadku zderzenie między obiektami nie zostaje zarejestrowane}
+\end{figure}
+\newpage
+
+\noindent W moim projekcie zastosowałem model dyskretny, ponieważ nie jest tu wymagana taka duża dokładno\'sć i pasuje on do sposobu w jaki działa silnik gry (wykonywanie aktualizacji co pewien okres).\\
+
+\noindent Wykrywanie kolizji dzieli się na dwie fazy:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+	\item Broad phase
+	\item Narrow phase
+\end{itemize}\bigskip
+
+\input{rozdzialy/broad_phase}
+
+W projekcie została użyta metoda Bounding Circles, ze względu na to, że obiekty w grze często się obracają i mają w wielu przypadkach kształt zbliżony do koła. Aby zmniejszyć liczbę obliczeń, obiekty zostały podzielone na kategorie.\\
+
+\noindent Obiekty podzielone są na następujące kategorie:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+	\item przeciwnicy
+	\item pociski przeciwników
+	\item gracz
+	\item pociski gracza
+	\item teren i tło
+	\item inne
+\end{itemize}
+
+\noindent Dzięki takiemu podziałowi można uniknąć obliczeń między obiektami które nie mają się ze sobą zderzać ani wchodzić w interakcję, a także wybierać z obiektami jakich kategorii dany obiekt może wchodzić w interakcje.\\
+Po przej\'sciu przez etap Broad Phase, pozostałe pary obiektów zostają następnie przeniesione do drugiego etapu, którym jest Narrow Phase.\\
+
+\input{rozdzialy/narrow_phase}
+
+\newpage
+\cleardoublepage

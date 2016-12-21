@@ -1,0 +1,15 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdftex 2016.11.6)  6 NOV 2016 15:44
+entering extended mode
+**"D:/uczelnia/inż/praca dyplomowa/przykład/literatura.bib"
+("D:/uczelnia/inż/praca dyplomowa/przykład/literatura.bib"
+! Undefined control sequence.
+l.3     howpublished={Web pages: \url
+                                     {http://www.oracle.com/technetwork/java...
+
+? 
+! Emergency stop.
+l.3     howpublished={Web pages: \url
+                                     {http://www.oracle.com/technetwork/java...
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

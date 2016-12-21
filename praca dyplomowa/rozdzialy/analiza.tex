@@ -1,0 +1,40 @@
+\chapter{Analiza zagadnienia}
+\label{chapter_analysis}
+\thispagestyle{chapterBeginStyle}
+
+W tym rozdziale przedstawię założenia i oczekiwane efekty dla różnych aspektów gry.
+
+Przede wszystkim, gra ma być skonstruowana tak aby działała na wszystkich nowszych i najczę\'sciej używanych przeglądarkach, takich jak Google Chrome, Mozilla Firefox, Internet Explorer i Opera.
+Gra powinna także odpowiednio wyglądać i zachowywać się zgodnie z tym czego można by sie po niej spodziewać, na przykład je\'sli dwa obiekty wyglądają jakby powinny się zderzyć, to rzeczywi\'scie powinno zaj\'sć zderzenie.
+
+Główny element gry to silnik gry. Zajmuje się on  wykonywaniem odpowiednich funkcji na obiektach w grze.
+Zazwyczaj jest to pętla działająca tak długo jak działa gra, używająca timer-ów do odpowiednio częstego wywoływania funkcji aktualizujących obiekty w grze.
+W grze ważny jest także silnik graficzny, odpowiadający za wy\'swietlanie obiektów i efektów na ekranie.
+Jednym z problemów do rozwiązania jest odpowiednie zsynchronizowanie obu tych elementów z czasem i sobą nawzajem, aby uniknąć sytuacji takich jak:\begin{itemize}
+	\item silnik gry zabierający cały czas procesora dla siebie, co powoduje rzadkie odw\'sieżanie zawartości ekranu i niegrywalno\'sć
+	\item silnik graficzny zabierający dużo czasu na obliczenia, przez co gra spowalnia i jest dużo mniej grywalna
+	\item obliczenia silnika graficznego i silnika gry pokrywające się, przez co niektóre obiekty zostają narysowane przed, a niektóre po aktualizacji stanu, co powoduje błędne wy\'swietanie pozycji niektórych obiektów i może wprowadzić gracza w błąd
+\end{itemize}
+
+Innym ważnym problemem jest odpowiednie wykrywanie kolizji w grze, tak aby nie było sytuacji, w której pokrywające się obiekty nie zderzają się ze sobą, albo obiekty będące daleko od siebie mają ze sobą kolizję. Ze względu na to, że to jeden z najważniejszych elemtentów w tego typu grze, potrzebny był algorytm, który będzie mógł szybko i dokładnie to sprawdzić. Zostało to rozwiązane przez podzielenie wykrywania kolizji na fazy oraz zastosowanie odpowiednich algorytmów wykrywania kolizji opisanych w rozdziale \ref{chapter_collission_detection}.
+
+\newpage
+\begin{wrapfigure}{l}{0.5\textwidth}
+	\centering
+	\noindent\includegraphics[width=0.5\textwidth]{player_uml}
+	\caption{diagram przedstawiający interakcję gracza z grą}
+\end{wrapfigure}
+Interakcja gracza z grą jest bardzo prosta.\\
+Gracz używa klawiatury do sterowania grą.\\
+Jako odpowiedź otrzymuje obraz i dźwięk informujące o tym co aktualnie dzieje się w grze.\\
+Do każdego z tych zadań istnieje odpowiednia klasa zajmująca się nim.
+
+Klasy odpowiedzialne za sterowanie oraz logikę gry zostały opisane w rozdziale \ref{chapter_logic}.
+
+Sposób wy\'swietlania na ekranie aktualnej sytuacji, na co składa się narysowanie wszystkich obiektów w grze oraz dodanie efektów graficznych, został opisany w rozdziale \ref{chapter_graphics}.
+
+Dźwięk został opisany w rozdziale \ref{chapter_music}.
+
+Jednym z mniejszych problemów jest dopasowanie do siebie wszystkich elementów gry, czyli przygotowanie gry tak, by podobała się odbiorcy. Przeciwnicy powinni być odpowiednio dopasowani do poziomu zaawansowania gracza, a także nie powinno być zbyt prosto lub zbyt łatwo.
+
+\cleardoublepage

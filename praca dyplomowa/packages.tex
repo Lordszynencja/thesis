@@ -1,0 +1,62 @@
+\usepackage[polish]{babel}
+\let\lll\undefined
+\selectlanguage{polish}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{indentfirst}
+\usepackage[plmath]{polski}
+\frenchspacing
+ 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bbold}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{framed}
+\usepackage{wrapfig}
+
+\usepackage[ruled,vlined,linesnumbered,longend,algochapter]{algorithm2e}
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Kod źródłowy}
+
+\usepackage{algorithm2e}
+
+\definecolor{lightgray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{darkgreen}{rgb}{0, 0.3, 0}
+\definecolor{orange}{rgb}{0.8, 0.6, 0.1}
+
+\lstdefinelanguage{JavaScript}{
+	keywords=[1]{typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, class, export, boolean, throw, implements, import, this},
+	keywordstyle=[1]{\color{blue}\bfseries},
+	identifierstyle=\color{black},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{darkgreen}\ttfamily,
+	stringstyle=\color{lightgray}\ttfamily,
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstset{
+	numbers=left,
+	numbersep=5pt,
+	tabsize=3,
+	language=JavaScript
+}
+
+\usepackage[headheight=18pt, top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
+\makeatletter
+\setlength\@fptop{0\p@}
+\makeatother
+
+\usepackage{titling}
+\usepackage{tocloft}	
+\tocloftpagestyle{tableOfContentStyle}
+\usepackage{fancyhdr}
+
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\newcommand{\tab}{\mathbb{R}}

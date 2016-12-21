@@ -1,0 +1,64 @@
+\chapter{Muzyka i efekty dźwiękowe}
+\thispagestyle{chapterBeginStyle}
+\label{chapter_music}
+
+Ten rozdział opisuje jak działa muzyka i efekty dźwiękowe w mojej grze.\vspace{10pt}\\
+\noindent{\Large Dźwięki}\smallskip
+
+Wszystkie efekty dźwiękowe oraz muzyka przechowywane są w plikach skompresowanych za pomocą MPEG Audio Layer 3 czyli popularnym formacie mp3. Każdy dźwięk, który ma zostać odtworzony, musi najpierw być pobrany z serwera.\\
+
+Do odtwarzania plików dźwiękowych używam klasy Audio, dostępnej w piątej wersji języka HTML. Przed tą wersją odtwarzanie dźwięku wymagało użycia wtyczki, ale dzięki rozwojowi języka HTML jest to teraz dostępne jako czę\'sć standardu.\\
+
+\noindent{\Large Efekty dźwiękowe}\smallskip
+
+Wszystkie dźwięki w mojej grze są obsługiwane przez napisaną przeze mnie klasę Sound. Wszystkie nazwy dźwięków są przechowywane w słowniku w tej klasie. Funkcja służąca do odtwarzania efektów dźwiękowych wygląda tak:
+\begin{lstlisting}
+play(name, volume) {
+	this.activeSound++;
+	var a = this.activeSound;
+	this.playing[a] = new Audio("sounds/" + this.sounds[name]);
+	this.playing[a].onended = this.defaultOnEnded(a);
+	this.playing[a].volume = volume*conf.overallVolume*conf.effectsVolume;
+	this.playing[a].play();
+}
+\end{lstlisting}
+Jako argumenty funkcja przyjmuje nazwę efektu dźwiękowego i jego gło\'sno\'sć.
+
+Aby można było odtwarzać wiele dźwięków naraz, wszystkie dźwięki są umieszczane w tablicy. Dzięki użyciu tablicy wszystkich odtwarzanych dźwięków, można mieć dostęp i wyłączyć każdy z nich (na przykład przy resetowaniu poziomu, wracaniu do menu itp.). Aby nie było kolizji, przy każdym nowym dźwięku zwiększany jest licznik dźwięków.
+
+Potem tworzony jest nowy dźwięk z pliku, którego nazwa jest warto\'scią w słowniku dla klucza w zmiennej name. Funkcją włączana po zakończeniu danego dźwięku usuwa go. Końcowa gło\'sno\'sć dźwięku jest iloczynem podanej gło\'sno\'sci, całkowitej gło\'sno\'sci gry oraz gło\'sno\'sci efektów dźwiękowych. Na koniec dźwięk jest odtwarzany.
+
+\newpage
+\noindent{\Large Muzyka}\smallskip
+
+Muzyka zachowuje się nieco inaczej niż efekty dźwiękowe. Przede wszystkim, w dowolnym momencie jest odtwarzana tylko jedna \'scieżka dźwiękowa dla muzyki, jest za to ona często zamieniana na inną, na przykład przy przej\'sciu z głównego menu do którego\'s poziomu.\\
+Funkcja zmieniająca odtwarzaną muzykę prezentuje się następująco:
+\begin{lstlisting}
+changeMusic(music, fadetime = 1) {
+	var thisvar = this;
+	if (this.changingMusic) {
+		return;
+	} else if (this.music == null) {
+		this.changingMusic = true;
+		this.playMusic(music);
+	} else {
+		this.changingMusic = true;
+		var musicVolume = this.musicVolume;
+		var fadetimeScaled = fadetime*100;
+		for (var i=0;i<fadetimeScaled;i++) {
+			window.setTimeout((function(volume) {
+				return function() {
+					thisvar.setMusicVolume(volume);
+				}
+			})((1-i/fadetimeScaled)*musicVolume), 10*i);
+		}
+		window.setTimeout(function() {
+			thisvar.playMusic(music);
+			thisvar.setMusicVolume(1);
+		}, fadetimeScaled*10);
+	}
+}
+\end{lstlisting}
+Dzięki zastosowaniu zmiennej typu boolean, podczas zmiany muzyki nie można przypadkowo zacząć zmieniać muzyki na jeszcze inną, co mogłoby powodować odtworzenie dwóch piosenek naraz.\\
+Dodatkowo muzyka jest stopniowo wyciszana żeby uzyskać efekt Fade, po czym odtwarzany jest nowy utwór. Czas trwania efektu Fade jest modyfikowalny.
+\cleardoublepage

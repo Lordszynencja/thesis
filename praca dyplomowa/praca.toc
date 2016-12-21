@@ -1,0 +1,9 @@
+\select@language {polish}
+\select@language {polish}
+\contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Analiza zagadnienia}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Logika gry}{5}{chapter.3}
+\contentsline {chapter}{\numberline {4}System wykrywania kolizji}{7}{chapter.4}
+\contentsline {chapter}{\numberline {5}Grafika}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Muzyka i efekty d\IeC {\'z}wi\IeC {\k e}kowe}{25}{chapter.6}
+\contentsline {chapter}{\numberline {7}Podsumowanie}{27}{chapter.7}

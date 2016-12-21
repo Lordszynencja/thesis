@@ -1,0 +1,5 @@
+Przewijana gra akcji 2D w jêzyku Javascript z wykorzystaniem WebGL 
+2D scrolling action game in Javascript using WebgL
+Szymon Lewandowski
+
+promotor dr Marcin Kik
