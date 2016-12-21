@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.16)  19 DEC 2016 20:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.16)  21 DEC 2016 19:41
 entering extended mode
 **praca.tex
 (praca.tex
@@ -1033,8 +1033,18 @@ File: images/menus_uml.png Graphic file (type png)
 <use images/menus_uml.png>
 Package pdftex.def Info: images/menus_uml.png used on input line 33.
 (pdftex.def)             Requested size: 184.09189pt x 214.38042pt.
- [6 <./images/menus_uml.png>])
-(rozdzialy/system_kolizji.tex
+ [6 <./images/menus_uml.png>] [7]
+<images/UI_uml.png, id=108, 2340.745pt x 2071.74pt>
+File: images/UI_uml.png Graphic file (type png)
+ <use images/UI_uml.png>
+Package pdftex.def Info: images/UI_uml.png used on input line 74.
+(pdftex.def)             Requested size: 472.03123pt x 417.78639pt.
+
+Overfull \hbox (25.0pt too wide) in paragraph at lines 79--80
+[][] 
+ []
+
+[8 <./images/UI_uml.png>]) (rozdzialy/system_kolizji.tex
 Rozdzia\l  4.
 
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
@@ -1047,13 +1057,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
  []
 
 
-<images/collission_detection_continuous.png, id=101, 545.03625pt x 295.85532pt>
+<images/collission_detection_continuous.png, id=115, 545.03625pt x 295.85532pt>
 File: images/collission_detection_continuous.png Graphic file (type png)
 <use images/collission_detection_continuous.png>
 Package pdftex.def Info: images/collission_detection_continuous.png used on inp
 ut line 19.
 (pdftex.def)             Requested size: 377.62642pt x 204.98006pt.
- [7
+ [9
 
 
  <./images/collission_detection_continuous.png>]
@@ -1061,7 +1071,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
  []
 
-<images/collission_detection_discrete.png, id=108, 543.53062pt x 293.59688pt>
+<images/collission_detection_discrete.png, id=123, 543.53062pt x 293.59688pt>
 File: images/collission_detection_discrete.png Graphic file (type png)
 
 <use images/collission_detection_discrete.png>
@@ -1074,15 +1084,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--34
  []
 
 
-<images/collission_detection_discrete_problem.png, id=109, 547.2947pt x 293.596
+<images/collission_detection_discrete_problem.png, id=124, 547.2947pt x 293.596
 88pt>
 File: images/collission_detection_discrete_problem.png Graphic file (type png)
  <use images/collission_detection_discrete_problem.png>
 Package pdftex.def Info: images/collission_detection_discrete_problem.png used 
 on input line 37.
 (pdftex.def)             Requested size: 377.62642pt x 202.58205pt.
- [8 <./images/collission_detection_discrete.png> <./images/collission_detection
-_discrete_problem.png>]
+ [10 <./images/collission_detection_discrete.png> <./images/collission_detectio
+n_discrete_problem.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
@@ -1097,22 +1107,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
-[9] <images/collissionAABB.png, id=123, 1003.75pt x 1003.75pt>
+[11] <images/collissionAABB.png, id=137, 1003.75pt x 1003.75pt>
 File: images/collissionAABB.png Graphic file (type png)
 
 <use images/collissionAABB.png>
 Package pdftex.def Info: images/collissionAABB.png used on input line 38.
 (pdftex.def)             Requested size: 396.5045pt x 396.5152pt.
- [10 <./images/collissionAABB.png>]
-<images/collission_rotated_boxes.png, id=133, 1003.75pt x 1003.75pt>
+ [12 <./images/collissionAABB.png>]
+<images/collission_rotated_boxes.png, id=147, 1003.75pt x 1003.75pt>
 File: images/collission_rotated_boxes.png Graphic file (type png)
 
 <use images/collission_rotated_boxes.png>
 Package pdftex.def Info: images/collission_rotated_boxes.png used on input line
  51.
 (pdftex.def)             Requested size: 472.03123pt x 472.03825pt.
- [11 <./images/collission_rotated_boxes.png>] <images/collission_circles.png, i
-d=140, 1003.75pt x 1003.75pt>
+ [13 <./images/collission_rotated_boxes.png>] <images/collission_circles.png, i
+d=154, 1003.75pt x 1003.75pt>
 File: images/collission_circles.png Graphic file (type png)
 
 <use images/collission_circles.png>
@@ -1123,16 +1133,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--69
 
  []
 
-[12 <./images/collission_circles.png>]
-<images/collission_sweep_and_prune.png, id=147, 1003.75pt x 1003.75pt>
+[14 <./images/collission_circles.png>]
+<images/collission_sweep_and_prune.png, id=161, 1003.75pt x 1003.75pt>
 File: images/collission_sweep_and_prune.png Graphic file (type png)
 
 <use images/collission_sweep_and_prune.png>
 Package pdftex.def Info: images/collission_sweep_and_prune.png used on input li
 ne 78.
 (pdftex.def)             Requested size: 472.03123pt x 472.03825pt.
- [13 <./images/collission_sweep_and_prune.png>] <images/collission_quadtree.png
-, id=154, 1003.75pt x 1003.75pt>
+ [15 <./images/collission_sweep_and_prune.png>] <images/collission_quadtree.png
+, id=169, 1003.75pt x 1003.75pt>
 File: images/collission_quadtree.png Graphic file (type png)
 
 <use images/collission_quadtree.png>
@@ -1148,8 +1158,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
-[14 <./images/collission_quadtree.png>]
-<images/collission_bounding_volumes_hierarchy.png, id=161, 1003.75pt x 1003.75p
+[16 <./images/collission_quadtree.png>]
+<images/collission_bounding_volumes_hierarchy.png, id=176, 1003.75pt x 1003.75p
 t>
 File: images/collission_bounding_volumes_hierarchy.png Graphic file (type png)
  <use images/collission_bounding_volumes_hierarchy.png>
@@ -1161,7 +1171,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 100--106
 
  []
 
-[15 <./images/collission_bounding_volumes_hierarchy.png>]
+[17 <./images/collission_bounding_volumes_hierarchy.png>]
 File: images/collission_bounding_volumes_hierarchy.png Graphic file (type png)
 
 <use images/collission_bounding_volumes_hierarchy.png>
@@ -1173,7 +1183,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--116
 
  []
 
-[16])
+[18])
 Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
@@ -1188,14 +1198,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-[17] <images/collission_pixel_perfect.png, id=180, 698.61pt x 698.61pt>
+[19] <images/collission_pixel_perfect.png, id=194, 698.61pt x 698.61pt>
 File: images/collission_pixel_perfect.png Graphic file (type png)
 
 <use images/collission_pixel_perfect.png>
 Package pdftex.def Info: images/collission_pixel_perfect.png used on input line
  52.
 (pdftex.def)             Requested size: 306.81741pt x 306.8137pt.
- [18 <./images/collission_pixel_perfect.png>]
+ [20 <./images/collission_pixel_perfect.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
@@ -1218,7 +1228,7 @@ File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OML/lmr/m/it' in size <10> not available
 (Font)              Font shape `OML/lmm/m/it' tried instead on input line 108.
- [19]
+ [21]
 Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
@@ -1228,21 +1238,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-[20]
-<images/collission_separating_planes.png, id=241, 752.8125pt x 752.8125pt>
+[22]
+<images/collission_separating_planes.png, id=256, 752.8125pt x 752.8125pt>
 File: images/collission_separating_planes.png Graphic file (type png)
 
 <use images/collission_separating_planes.png>
 Package pdftex.def Info: images/collission_separating_planes.png used on input 
 line 148.
 (pdftex.def)             Requested size: 472.03123pt x 472.04591pt.
-) [21 <./images/collission_separating_planes.png>] [22
+) [23 <./images/collission_separating_planes.png>] [24
 
 ]) (rozdzialy/grafika.tex
 Rozdzia\l  5.
-[23
+[25
 
-] [24
+] [26
 
 ]) (rozdzialy/muzyka.tex
 Rozdzia\l  6.
@@ -1260,29 +1270,29 @@ LaTeX Font Info:    Try loading font information for OT4+lmtt on input line 19.
 
 (D:\Programy\MiKTeX\tex\latex\lm\ot4lmtt.fd
 File: ot4lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [25
+) [27
 
 ]
 LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
 (Font)              Font shape `OML/lmm/m/it' tried instead on input line 48.
- [26])
+ [28])
 (rozdzialy/podsumowanie.tex
 Rozdzia\l  7.
-[27
+[29
 
 
-] [28
+] [30
 
-]) (bibliografia.tex [29
+]) (bibliografia.tex [31
 
 ]
-<images/wppt-logo.png, id=327, 75.8835pt x 66.4884pt>
+<images/wppt-logo.png, id=341, 75.8835pt x 66.4884pt>
 File: images/wppt-logo.png Graphic file (type png)
 
 <use images/wppt-logo.png>
 Package pdftex.def Info: images/wppt-logo.png used on input line 22.
 (pdftex.def)             Requested size: 23.603pt x 20.68018pt.
- [30
+ [32
 
  <./images/wppt-logo.png>])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
@@ -1295,10 +1305,10 @@ Package rerunfilecheck Info: File `praca.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
  ) 
 Here is how much of TeX's memory you used:
- 12164 strings out of 493698
- 172066 string characters out of 3148062
+ 12172 strings out of 493698
+ 172187 string characters out of 3148062
  306376 words of memory out of 3000000
- 15078 multiletter control sequences out of 15000+200000
+ 15082 multiletter control sequences out of 15000+200000
  55175 words of font info for 51 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  34i,18n,44p,1380b,1322s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1319,9 +1329,9 @@ fonts/type1/public/lm/lmro10.pfb><D:/Programy/MiKTeX/fonts/type1/public/lm/lmsy
 /fonts/type1/public/pl/plmi10.pfb><D:/Programy/MiKTeX/fonts/type1/public/pl/plr
 10.pfb><D:/Programy/MiKTeX/fonts/type1/public/pl/plr7.pfb><D:/Programy/MiKTeX/f
 onts/type1/public/pl/plsy10.pfb>
-Output written on praca.pdf (34 pages, 779819 bytes).
+Output written on praca.pdf (36 pages, 973311 bytes).
 PDF statistics:
- 425 PDF objects out of 1000 (max. 8388607)
- 135 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 439 PDF objects out of 1000 (max. 8388607)
+ 138 named destinations out of 1000 (max. 500000)
+ 142 words of extra memory for PDF output out of 10000 (max. 10000000)
 

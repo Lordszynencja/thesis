@@ -39,15 +39,40 @@ Pierwsze co gracz widzi po włączeniu gry, to ekran głównego menu, zawierają
 
 Główny silnik gry działa poprzez aktualizowanie stanu gry co każde 20 milisekund. Jeden taki cykl polega zazwyczaj na uaktualnieniu wszystkich aktywnych obiektów. Gdy gracz jest w głównym menu gry, nie ma zbyt wiele obiektów do aktualizacji, dopiero gdy włączy się który\'s z poziomów pojawiają się większe, bardziej skomplikowane obiekty. Na początku jest aktualizowany obiekt klasy UI, który zajmuje się obsługiwaniem aktualnego menu (poziom w grze to także rodzaj menu). Następny jest obiekt osługujący grafikę (tutaj aktualizacja polega zazwyczaj na wyczyszczeniu buforów), a potem wszystkie nowe dane do rysowania są przekazywane do obiektu obsługującego grafikę. Na końcu raz na dwie sekundy aktualne statystyki i opcje gry są zapisywane w magazynie oraz zostaje zwiększony licznik czasu.
 
-Niezależnie od aktualizacji działa sterowanie w grze. Jest ono przekazywane na dwa sposoby: jako tablica wci\'sniętych klawiszy przechowywana w odpowiednim obiekcie oraz zdarzenie wysyłane do aktualnego menu. To drugie służy tylko do sterowania w menu, i nie jest używane we wła\'sciwej grze poza opcją włączenia menu pauzy. Tablica klawiszy służy natomiast podczas aktualizacji w samej grze, i zawiera informację typu boolean dla każdego klawisza, mówiącą czy jest on wci\'snięty.
+Większo\'sć klas w projekcie ma funkcje ''update'' oraz ''draw'', służące odpowiednio do aktualizacji oraz rysowania obiektu.
+
+Niezależnie od aktualizacji działa sterowanie w grze. Jest ono przekazywane na dwa sposoby: jako tablica wci\'sniętych klawiszy przechowywana w odpowiednim obiekcie oraz zdarzenie wysyłane do aktualnego menu. To drugie służy tylko do sterowania w menu, i nie jest używane we wła\'sciwej grze poza opcją włączenia menu pauzy. Tablica klawiszy służy natomiast podczas aktualizacji w samej grze, i zawiera informację typu boolean dla każdego klawisza, mówiącą czy jest on wci\'snięty.\bigskip
 
 \noindent{\LARGE Aktualizacja w trakcie poziomu}
 
-Aktualizacja w trakcie poziomu zaczyna się od aktualizacji obiektu danego poziomu, zazwyczaj powoduje to pojawienie się przeciwników oraz kończenie misji przy spełnieniu odpowiedniego warunku. Następny krok to aktualizacja wszystkich efektów, najczę\'sciej przez zmianę ich pozycji.
-Następnie aktualizują się przeciwnicy, czyli:\begin{itemize}
+Aktualizacja w trakcie poziomu zaczyna się od aktualizacji obiektu danego poziomu, zazwyczaj powoduje to pojawienie się przeciwników oraz kończenie misji przy spełnieniu odpowiedniego warunku. Każdy poziom ma własna klasę reprezentującą go.\\
+Każda klasa poziomu zawiera przypisane do niego: \begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+	\item listę zawierającą dane o typie, czasie pojawienia się i zachowaniu przeciwników
+	\item długo\'sć poziomu (gdy poziom się kończy, gracz wygrywa)
+	\item informacje o specjalnym przeciwniku na końcu poziomu (lub jego braku)
+\end{itemize}\smallskip
+
+\noindent Następny krok to aktualizacja wszystkich efektów, najczę\'sciej przez zmianę ich pozycji. Efekty są opisane dokładniej w rozdziale \ref{chapter_graphics}.\newpage
+\noindent Następnie aktualizują się przeciwnicy, czyli:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item zmieniają swoją pozycję
 	\item używają danych im broni
 	\item aktywują umiejętno\'sci specjalne
 \end{itemize}
+Każdy przeciwnik ma przypisane do siebie swoją pozycję, zachowanie, model statku oraz zazwyczaj broń lub bronie. Każda klasa typu przeciwnik ma także punkty uzyskane za pokonanie danego typu przeciwnika, jego maksymalną wytrzymało\'sć  oraz domy\'slny model używany przy wykrywaniu kolizji.\smallskip
+
+Kolejny krok aktualizuje pociski przeciwników, czyli zmienia ich położenie według zaprogramowanego ruchu, a także sprawdza czy nie zderzyły sie one z graczem. System kolizji jest opisany w rozdziale \ref{chapter_collission_detection}. Potem to samo jest powtarzane dla pocisków wystrzelonych przez gracza.
+
+Obiekty pocisków zawierają zazwyczaj informacje o położeniu, obrażeniach, sposobie ruchu i modelu używanym do zderzeń.\smallskip
+
+Ostatnim krokiem jest aktualizacja statku gracza. Sprawdzane jest tam, czy gracz wcisnął klawisze służące do przemieszczania statku (strzałki). Na końcu aktualizowany jest statek gracza, w tym to czy gracz używał broni (klawisz spacji), czy chłodnica statku się nie przegrzała oraz czy statkowi nie skończyły sie punkty wytrzymało\'sci, co wcze\'snie kończy grę.
+Obiekt typu Player jest jednym z bardziej skomplikowanych. Oprócz zwykłych danych takich jak wygląd, pozycja oraz model, zawiera także dokładniejsze informacje o broni. W przeciwieństwie do przeciwników jest też możliwo\'sć zmienić jego statek i broń, a na jego zachowanie oprócz samego sposobu poruszania się ma wpływ także sterowanie gracza. Ze względu na to że gracz widzi go cały czas jest jedną z najważniejszych czę\'sci gry.\bigskip
+
+Gdy wszystkie kroki zostały wykonane, jeden cykl silnika gry się kończy i gra czeka na następny. W międzyczasie między aktualizacjami obraz jest także przerysowywany, co jest opisane w rozdziale \ref{chapter_graphics}.\newpage
+
+\begin{wrapfigure}{r}{\textwidth}
+	\centering
+	\noindent\includegraphics[width=\textwidth]{UI_uml}
+	\caption{przykład obiektu UI, pokazujący strukturę obiektów}
+\end{wrapfigure}
 
 \cleardoublepage
