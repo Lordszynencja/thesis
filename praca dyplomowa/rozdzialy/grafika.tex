@@ -17,7 +17,7 @@ Można także używać struktur oraz tablicy zmiennych, jednak struktury nie mog
 Dostępne modyfikatory to:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item const - podobnie jak w języku C, jest to stała, tylko do odczytu
 	\item attribute - dostepne tylko w vertex shaderze - oznacza zmienną w której można umie\'scić dane przekazane do shadera (po podzieleniu)
-	\item uniform - podobnie jak modyfikator attribute, ten modyfikator pozwala umie\'scić w zmiennej dane z zewnątrz, jednak tutaj są one wspólne dla wszystkich przetwarzanych wierzchołków, nie są dzielone
+	\item uniform - podobnie jak modyfikator attribute, ten modyfikator pozwala umie\'scić w zmiennej dane z zewnątrz, jednak tutaj są one wspólne dla wszystkich przetwarzanych wierzchołków, nie są dzielone, zazwyczaj są one używane do przekazania macierzy obrotu, przesunięcia lub perspektywy, oraz dostępu do tekstur
 	\item varying - dane otrzymane z vertex shadera, które zostaną w przetworzone w rasteryzatorze i podane dalej do fragment shadera (można w nich umie\'scić np. pozycje wierzchołków na teksturze, a zostanie otrzymana pozycja dla każdego z pikseli w otrzymanym kształcie)
 \end{itemize}
 
@@ -87,26 +87,128 @@ void main(void) {
 \newpage\noindent{\LARGE Przykładowe shadery z efektami}
 
 Zaprezentuję tutaj kilka shaderów tworzących ciekawe efekty. Można ich użyc jako efekty nałożone na całą scenę lub tylko no niektóre jej elementy, czasami też efekty same w sobie tworzą ładną grafikę.
-Działają one w ten sposób, że kolor danego piksela jest obliczany jedynie na podstawie jego pozycji, używając funkcji matematycznych. Ze względu na działanie podzieliłem je na kształty oraz kolory.
+Działają one w ten sposób, że kolor danego piksela jest obliczany jedynie na podstawie jego pozycji, używając funkcji matematycznych. Ze względu na działanie podzieliłem je na kształty oraz kolory.\bigskip
 
 \noindent{\Large Kształty}
 
-Kształty dają jako wynik liczbę, przez którą mnożomy kolor dla danego piksela, aby wzmocnić lub osłabić w nim kolor.
+Kształty dają jako wynik liczbę, przez którą mnożomy kolor dla danego piksela, aby wzmocnić lub osłabić w nim kolor.\bigskip
 
-\begin{wrapfigure}{r}{0.3\textwidth}
+\begin{wrapfigure}{l}{0.55\textwidth}
 	\centering
-	\noindent\includegraphics[width=0.3\textwidth]{shape_rounded_square}
-	\caption{Przykład zaokrąglonego kwadratu dla potęg 0.5, 1, 2 i 4}
-	\noindent\includegraphics[width=0.3\textwidth]{shape_circles}
-	\caption{Przykład efektu rozchodzących się kół}
+	\noindent\includegraphics[width=0.25\textwidth]{shape_rounded_square}
+	\noindent\includegraphics[width=0.25\textwidth]{shape_circles}
+	\caption{Przykład zaokrąglonego kwadratu dla potęg 0.5, 1, 2 i 4 oraz efektu rozchodzących się kół}
 \end{wrapfigure}
-{\large Zaokrąglony kwadrat}
 
-Uzyskuje się go przez obliczenie odległo\'sci za pomocą miary używającej innej potęgi (dla potęgi równej 2 uzyskuje się koło). Przy uzależnieniu stopnia potęgi od czasu można uzyskać ładny efekt pulsowania.
+\noindent{\large Zaokrąglony kwadrat}
 
-{\large Rozchodzące się koła}
+Uzyskuje się go przez obliczenie odległo\'sci za pomocą miary używającej innej potęgi (dla potęgi równej 2 uzyskuje się koło). Przy uzależnieniu stopnia potęgi od czasu można uzyskać ładny efekt pulsowania.\smallskip
 
-Ten efekt uzyskuje się przez pomnożenie odległo\'sci od \'srodka przez jaką\'s stałą, dodanie aktualnego czasu, a następnie użycie na wyniku funkcji okresowej, takiej jak sinus. Aby uzyskać efekt perpektywy i tunelu można też użyć logarytmu z odległo\'sci.
+\noindent{\large Rozchodzące się koła}
+
+Ten efekt uzyskuje się przez pomnożenie odległo\'sci od \'srodka przez jaką\'s stałą, dodanie aktualnego czasu, a następnie użycie na wyniku funkcji okresowej, takiej jak sinus. Aby uzyskać efekt perpektywy i tunelu można też użyć logarytmu z odległo\'sci.\smallskip\\
+
+\noindent{\large Pofalowane koło}
+
+Efekt pofalowanego koła uzyskuje się przez obliczenie odległo\'sci od koła, którego promień zależy od kąta między danym punktem a \'srodkiem układu współrzędnych.\smallskip
+
+\noindent{\large Fala}
+
+Efekt fali uzyskuje się prze policzenie odległo\'sci od prostej, przesuniętej zależnie od wysoko\'sci.\smallskip
+
+\noindent{\large Gwiazda}
+
+Aby uzyskać efekt gwiazdy trzeba policzyć odległo\'sć od danego punktu w mierze o podstawie mniejszej niż 1, np. 0.3, przy wyższych potęgach uzyskuje się wypełniony zaokrąglony kwadrat.
+
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.3\textwidth]{shape_waved_circle}
+	\noindent\includegraphics[width=0.3\textwidth]{shape_wave}
+	\noindent\includegraphics[width=0.3\textwidth]{shape_star}
+	\caption{Przykład użycia efektów pofalowanego koła, fali oraz gwiazdy dla różnych danych}
+\end{figure}\newpage
+
+\noindent{\Large Kolory}
+
+Kolory tworzą kolory zależnie od położenia, czasu oraz innych czynników. Można ich użyć żeby zmienić poszczególne barwy obrazu.
+
+\noindent{\large Tęcza}
+
+Efekt tęczy używa kąta do okre\'slenia siły poszczególnych kolorów we fragmencie.
 
 
+\noindent{\large Disco}
+
+Efekt disco używa odległo\'sci oraz kąta do okre\'slenia poszczególnych kolorów, może się także obracać obraz zmniejszać rozmiar. Poszczególne poziomy tego efektu (czyli fragmenty w różnych kolorach) moga poruszać się z różnymi prędko\'sciami. Można tak ustawić dane dla niego aby np. efekt zmniejszał się i zwiększał w rytm muzyki.
+
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.49\textwidth]{color_rainbow}
+	\noindent\includegraphics[width=0.49\textwidth]{color_disco}
+	\caption{Przykład efektu tęczy oraz disco}
+\end{figure}
+
+Są także inne efekty, można na przykład poprzesuwać poszczególne kanały względem siebie, zmniejszyć ilo\'sć dostępnych kolorów, albo rozmyć obrazek. Aby uzykać ciekawsze efekty można też połączyć kształty z kolorami.
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.425\textwidth]{effect0}
+	\noindent\includegraphics[width=0.425\textwidth]{effect1}
+\end{figure}\newpage
+
+\begin{figure}[h]
+	\centering
+	\noindent\includegraphics[width=0.495\textwidth]{effect2}
+	\noindent\includegraphics[width=0.495\textwidth]{effect3}
+	\noindent\includegraphics[width=0.495\textwidth]{effect4}
+	\noindent\includegraphics[width=0.495\textwidth]{effect5}
+	\caption{Przedstawienie różnych efektów, powstałych przez połączenie różnych kształtów i kolorów}
+\end{figure}\smallskip
+
+\noindent Jak widać, efekty takie mogą bardzo ładnie wyglądać, chociaż wyglądają jeszcze lepiej w ruchu. 
+
+Jednak same efekty zazwyczaj nie wystarczą w grze, potrzebne są też tekstury i obiekty, które trzeba narysować.\bigskip
+
+{\LARGE Przygotowanie shaderów}\smallskip
+
+Przedstawię teraz proces przygotowywania shaderów oraz danych dla nich. Pierwszym krokiem jest pobranie kontekstu dla elementu HTML Canvas, który jest wykorzystywany do rysowania. Aby to zrobić wystarczy użyć dostępnej dla obiektu Canvas funkcji getContext() i zapisaniu zwróconego obiektu do zmiennej (nazwijmy ją gl). To ten obiekt będzie podstawą do wykonywania wszelkich operacji, będziemy go używać do przesyłania danych, uruchamiania shaderów i rysowania.
+
+Pierwszy krok to utworzenie buforów, które będą użyte do przesyłania danych do karty graficznej. Na razie bufory te będą nieprzypisane do żadnej ze zmiennych, nastąpi to dopiero po skompilowaniu shaderów.
+
+Następny krok to wykorzystanie obiektu gl do stworzenia pustego shader programu. Potem tworzymy dwa shadery (typu vertex i typu fragment), ustawiamy jako ich kody źródłowe kody, które wcze\'sniej przygotowali\'smy w zmiennej typu string, i kompilujemy je. Po kompilacji obu shaderów możemy je przypiąć do naszego shader programu. Potem shader program zostaje uruchomiony przez użycie na obiekcie gl funkcji linkProgram(program) oraz useProgram(program). W dowolnym momencie można zmienić aktualnie używany shader program, należy jednak pamiętać aby wypełnić też wtedy na nowo bufory przypisane do danego programu.
+
+Po uruchomieniu programu możemy wreszcie przypiąć bufory do zmiennych zawartych w naszych programach. Robi się to przez wyznaczenie danego bufora jako aktualnie używany, a następnie ustawienie mu wskaźnika na zmienną w dowolnym z shaderów. Przy przypisywaniu wskaźnika do bufora podaje się ile i jakie dane powinien on dostać na wej\'sciu. Na koniec należy jeszcze oznaczyć ten wskaźnik jako włączony.
+
+Należy zaznaczyć, że w ten sposób można przesyłać dane tylko do zmiennych z modyfikatorem attribute.
+
+Kolejny krok to przygotowanie wskaźników na dane z modyfikatorem uniform. Wykonuje się to przez użycie funkcji getUniformLocation(program, nazwaZmiennej), która zwraca obiekt używany jako wskaźnik.
+
+\noindent Przykładowy kod tworzący i łączący bufor colorBuffer ze zmienną color typu attribute vec3, a następnie pobierający wskaźnik zmiennej scale typu uniform float:
+\begin{lstlisting}
+var colorBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+var colorLocation = gl.getAttribLocation(shader, "color");
+gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
+gl.enableVertexAttribArray(colorLocation);
+var scaleUniform = gl.getUniformLocation(shader, "scale");
+\end{lstlisting}
+
+Ostatni krok w przygotowaniu shadera do działania to ustawienie zmiennych takich jak:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+	\item używanie bufora głęboko\'sci - wtedy obiekty rysowane na ekranie nie mogą być nadrysowane przez te, które są za nimi
+	\item funkcja głęboko\'sci - ustawienie testu głęboko\'sci (można na przykład ustawić, aby obiekt będący głębiej nadrysowywał te będące bliżej ekranu)
+	\item viewport - ustawienie obszaru, na którym będziemy rysować
+	\item używanie mieszania kolorów - decyduje czy kanał alfa będzie używany, aby połączyć kolory przy obiektach półprzezroczystych (je\'sli nie, będą one całkowicie wypełniać piksel)
+	\item funkcja mieszania kolorów - decyduje w jaki sposób kolory będą mieszane
+	\item stencil test - dodatkowy test, wykonywany dla każdego piksela w danej figurze, polega na porównaniu warto\'sci z bufora z stałą za pomocą danej funkcji, mozna go użyć do nałożenia maski na wy\'swietlane elementy
+\end{itemize}
+
+Po przygotowaniu shader programu można użyć go do wy\'swietlania nim obiektów na ekranie. Aby wy\'swietlić co\'s, trzeba jednak włożyć dane do odpowiednich buforów. Aby włożyć dane, ponownie uaktywniamy dany bufor funkcją bindBuffer, a następnie używamy funkcji bufferData. Argumentem tej funkcji są dane, które zostaną podzielone i przypisane do poszczególnych wierzchołków. Podobnie zapisuje się dane w zmiennych typu uniform, używając wcze\'sniej przygotowanego wskaźnika.
+
+Poniższy kod prezentuje umieszczanie danych w buforach:
+\begin{lstlisting}
+gl.uniform1f(scaleUniform, 1.5);
+gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([1,1,1, 0,0,0]), gl.STREAM_DRAW);
+\end{lstlisting}
+
+Ponieważ dane dla colorBuffer-a to 6 liczb, a jest on przypisany do zmiennej składającej się z 3 liczb, zostaną one podzielone na dane dla dwóch wierzchołków. 
 \cleardoublepage
