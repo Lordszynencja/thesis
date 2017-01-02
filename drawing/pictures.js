@@ -581,13 +581,6 @@ function toLines(model, f) {
 function drawNarrow() {
 	restart();
 	
-	var shape1 = [-0.6,0.8,
-		0, 0.8,
-		-0.4,0.4,
-		-0.8,0];
-	drawShape(shape1, [0, 0], 1, 0, black, drawTypes.lineLoop);
-	drawShape(shape1, [0, 0], 1, 0, black, drawTypes.points, 5);
-	
 	var shape2 = [-0.8,0,
 		-0.4,-0.4,
 		0,-0.2,
@@ -605,9 +598,8 @@ function drawNarrow() {
 	drawShape(shape3, [0, 0], 1, 0, black, drawTypes.points, 5);
 	
 	drawShape([0,0.2, 0,0, 0,0.2, 0.13,0.04], [0, 0], 1, 0, blue, drawTypes.lines);
-	drawShape(toLines([-0.8,0, 0,0.8, 0,-0.2, 0,0.2, 0.6,0.4], function(x,y) { return [x+(-y-0.8)/(-3), -0.8];}), [0, 0], 1, 0, blue, drawTypes.lines);
+	drawShape(toLines([-0.8,0, 0,-0.2, 0,0.2, 0.6,0.4], function(x,y) { return [x+(-y-0.8)/(-3), -0.8];}), [0, 0], 1, 0, blue, drawTypes.lines);
 	drawHorizontalLine(-0.8, 1, -0.8, black);
 	drawHorizontalLine(0.333, 1, -0.81, blue);
 	drawHorizontalLine(-0.533, 0.2, -0.81, blue);
-	drawHorizontalLine(-0.533, 0.533, -0.82, red);
 }drawNarrow();

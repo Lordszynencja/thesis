@@ -58,7 +58,7 @@ Na koniec zostaje sprawdzone, czy którykolwiek z pikseli bufora ma warto\'sć 1
 \noindent{\Large Wykrywanie kolizji metodą Separating Planes}\smallskip
 
 Metoda Płaszczyzn Oddzielających polega na znalezieniu płaszczyzny, która oddziela od siebie dwa obiekty.
-Płaszczyzna taka istnieje wtedy i tylko wtedy, gdy są spełnione następujące warunki:
+Płaszczyzna taka istnieje je\'sli są spełnione następujące warunki:
 \begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item Zbiory punktów należących do obydwu obiektów są zbiorami wypukłymi
 	\item Obiekty się nie pokrywają
@@ -119,21 +119,20 @@ Ostatnim etapem algorytmu jest usunięcie punktów, które nie tworzą otoczki. 
 
 Wynikiem jest lista punktów tworzących otoczkę wypukłą danego modelu.
 
-
 Złożono\'sć algorytmu dla n punktów to O(n) dla pierwszego etapu (wybierania początkowego punktu), O(nlogn) dla sortowania oraz O(n) dla przej\'scia po li\'scie i usunięcia niepotrzebnych wierzchołków. Algorytm jest więc ograniczony przez czas sortowania, O(nlogn). Złożono\'sć pamięciowa algorytmu to O(n).
 
-Istnieją algorytmy rozwiązujące ten problem w czasie O(nlogh), gdzie h to ilo\'sć punktów w wyj\'sciowym modelu, są to więc algorytmy, których czas działania jest zależny od wielko\'sci wyj\'scia.\bigskip\\
+Istnieją algorytmy rozwiązujące ten problem w czasie O(nlogh), gdzie h to ilo\'sć punktów w wyj\'sciowym modelu, są to więc algorytmy, których czas działania jest zależny od wielko\'sci wyj\'scia.\bigskip
 
-Użycie drugiego rozwiązania sprowadza się zazwyczaj do problemu triangulacji wielokąta, z czasem O(nlogn) dla najlepszych algorytmów. W projekcie zostało jednak użyte pierwsze rozwiązanie dla skomplikowanych modeli, a dla mniejszych modeli dane są tworzone ręcznie przy tworzeniu modelu.\\
+Użycie drugiego rozwiązania sprowadza się zazwyczaj do problemu triangulacji wielokąta, z czasem O(nlogn) dla najlepszych algorytmów. W projekcie zostało jednak użyte pierwsze rozwiązanie dla skomplikowanych modeli, a dla mniejszych modeli dane są tworzone ręcznie przy tworzeniu modelu.\bigskip
 
 \noindent{\Large Testowanie kolizji}\smallskip
 
-\noindent Gdy obiekty są już w postaci zbiorów wypukłych, można przej\'sć do sprawdzenia czy zaszło zderzenie.\\
+\noindent Gdy obiekty są już w postaci otoczek wypukłych, można przej\'sć do sprawdzenia czy zaszło zderzenie.\\
 Algorytm wyrażony w pseudokodzie wygląda następująco:\begin{enumerate}
 	\item dla każdego punktu z pierwszego obiektu:\begin{enumerate}
 		\item wyznacz wektor $v$ od danego punktu do następnego punktu w modelu
 		\item weź dowolną prostą $p$, która nie jest równoległa do wektora $v$
-		\item wykonaj rzut prostopadły obu obiektów na prostą $p$, otrzymując dwa odcinki na tej prostej, $m_1$ i $m_2$
+		\item wykonaj rzut równoległy do wektora $v$ obu obiektów na prostą $p$, otrzymując dwa odcinki na tej prostej, $m_1$ i $m_2$
 		\item je\'sli $m_1$ i $m_2$ się nie pokrywają, została znaleziona prosta oddzielająca oba obiekty (równoległa do $v$), następuje koniec algorytmu
 	\end{enumerate}
 	\item powtórz obliczenia zamieniając obiekty ze sobą
@@ -141,7 +140,7 @@ Algorytm wyrażony w pseudokodzie wygląda następująco:\begin{enumerate}
 \end{enumerate}\bigskip
 
 \noindent Wynikiem tego algorytmu jest pewna odpowiedź czy obiekty kolidują, czy też nie.\\
-Złożono\'sć algorytmu, dla wielko\'sci modeli wynoszących $n_1$ i $n_2$, wynosi O($n_1$$n_2$).\newpage
+Złożono\'sć algorytmu, dla wielko\'sci modeli wynoszących $n_1$ i $n_2$, wynosi O($(n_1+n_2)^2$).\newpage
 
 \begin{figure}[h]
 	\centering

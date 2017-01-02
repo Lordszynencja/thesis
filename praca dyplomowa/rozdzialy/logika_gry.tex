@@ -1,6 +1,6 @@
 \chapter{Logika gry}
 \thispagestyle{chapterBeginStyle}
-\label{chapter_logic}
+\label{ch:logic}
 
 \noindent{\LARGE Inicjalizacja gry}\smallskip
 
@@ -13,7 +13,7 @@ Inicjalizacja zaczyna się od utworzenia obiektów odpowiedzialnych za poszczeg�
 \begin{wrapfigure}{l}{0.39\textwidth}
 	\centering
 	\noindent\includegraphics[width=0.39\textwidth]{game_init_uml}
-	\caption{diagram przedstawiający interakcję gracza z grą}
+	\caption{inicjalizacja gry}
 \end{wrapfigure}
 Następny krok to wczytanie ustawień, takich jak gło\'sno\'sć i ustawienia graficzne, a także stanu gry - odblokowanych poziomów, zdobytych punktów, uzyskanych osiągnięć i kilka innych statystyk. Ustawienia te są wczytywane z udostępnianego przez przeglądarkę magazynu lokalnego, dostępnego w języku HTML5. Magazyn lokalny jest podobny do używanych na większo\'sci stron ciasteczek, ale jest większy i łatwiejszy w użyciu, ponieważ jest obiektem działającym jak słownik z języka JavaScript, zawierającym tylko klucze i ciągi znaków do nich przypisane. Dzięki temu można łatwo zapisać w nim obiekt z danymi po przetłumaczeniu go na format JSON. Przy wczytaniu danej typu string z magazynu lokalnego, wystarczy zamienić dane w formie JSON-a na zwykły obiekt JavaScript.
 
@@ -25,7 +25,7 @@ W przypadku braku danych w magazynie lokalnym używane są dane domy\'slne.
 
 Po wczytaniu danych, następuje rozpoczęcie gry. Ustawiany jest timer, co 20 ms, czyli 50 razy na sekundę, uruchamiający funkcję obliczającą jeden cykl silnika gry. Następnie do przeglądarki jest wysyłane żądanie uruchomienia funkcji renderującej. Argument funkcji requestAnimationFrame jest uruchamiany wtedy przed następnym od\'swieżeniem rysowanych elementów (takich jak element Canvas, na którym jest umieszczany obraz z gry). Na koniec uruchamiana jest muzyka z głównego menu gry.
 
-Po skończeniu inicjalizacji gry, okresowo wywołują się funkcje odpowiedzialne za logikę gry, opisaną poniżej, oraz za grafikę, opisaną w rozdziale \ref{chapter_graphics}.
+Po skończeniu inicjalizacji gry, okresowo wywołują się funkcje odpowiedzialne za logikę gry, opisaną poniżej, oraz za grafikę, opisaną w rozdziale \ref{ch:graphics}.
 \newpage
 
 \noindent{\LARGE Menu gry}\smallskip
@@ -35,7 +35,7 @@ Po skończeniu inicjalizacji gry, okresowo wywołują się funkcje odpowiedzialn
 	\noindent\includegraphics[width=0.39\textwidth]{menus_uml}
 	\caption{Przej\'scia między menu}
 \end{wrapfigure}
-Pierwsze co gracz widzi po włączeniu gry, to ekran głównego menu, zawierający opcje ''Graj'' oraz ''Opcje''. Sterowanie w menu to klawisze strzałek, enter i escape, służące do zmiany pod\'swietlonej opcji, wej\'scia do daneg menu oraz cofnięcia się z niego. Wybranie pozycji ''Opcje'' przeniesie nas do menu z różnymi ustawieniami gry, takimi jak ilo\'sć efektów, gło\'sno\'sć czy też możliwo\'sć zresetowania postępu w grze. Druga opcja natomiast przenosi nas do menu wyboru poziomu, będzie tam też można za zdobyte w grze punkty ulepszyć statek gracza. Na początku odblokowany jest tylko jeden poziom, ale z postępami w grze gracz odblokowuje kolejne poziomy, a także możliwo\'sci rozwoju statku. Po przej\'sciu do którego\'s z poziomów zaczyna się wła\'sciwa gra, na dole ekranu pojawia się statek gracza, a z góry zaczynają po chwili nadlatywać przeciwnicy. Wci\'snięcie spacji powoduje strzelanie z głównych działek, a gdy trafimy w przeciwnika wystarczająco dużo razy, zastaje on pokonany a gracz dostaje punkty. Aby przej\'sć poziom wystarczy dolecieć do jego końca, omijając lub pokonując spotkanych po drodze przeciwników. Aby zatrzymać grę należy wcisnąć przycisk escape. Menu pauzy pozwala przej\'sć do panelu opcji, wrócić do gry lub skończyć poziom.\bigskip
+Pierwsze co gracz widzi po włączeniu gry, to ekran głównego menu, zawierający pozycje ''Graj'' oraz ''Opcje''. Sterowanie w menu to klawisze strzałek, enter i escape, służące do zmiany pod\'swietlonej opcji, wej\'scia do danego menu oraz cofnięcia się z niego. Wybranie pozycji ''Opcje'' przeniesie nas do menu z różnymi ustawieniami gry, takimi jak ilo\'sć efektów, gło\'sno\'sć czy też możliwo\'sć zresetowania postępu w grze. Druga opcja natomiast przenosi nas do menu wyboru poziomu, będzie tam też można za zdobyte w grze punkty ulepszyć statek gracza. Na początku odblokowany jest tylko jeden poziom, ale z postępami w grze gracz odblokowuje kolejne poziomy, a także możliwo\'sci rozwoju statku. Po przej\'sciu do którego\'s z poziomów zaczyna się wła\'sciwa gra, na dole ekranu pojawia się statek gracza, a z góry zaczynają po chwili nadlatywać przeciwnicy. Wci\'snięcie spacji powoduje strzelanie z głównych działek, a gdy trafimy w przeciwnika wystarczająco dużo razy, zastaje on pokonany a gracz dostaje punkty. Aby przej\'sć poziom wystarczy dolecieć do jego końca, omijając lub pokonując spotkanych po drodze przeciwników. Aby zatrzymać grę należy wcisnąć przycisk escape. Menu pauzy pozwala przej\'sć do panelu opcji, wrócić do gry lub skończyć poziom.\bigskip
 
 \noindent{\LARGE Główny silnik gry}\smallskip
 
@@ -54,7 +54,7 @@ Każda klasa poziomu zawiera przypisane do niego: \begin{itemize}[topsep=0.2em, 
 	\item informacje o specjalnym przeciwniku na końcu poziomu (lub jego braku)
 \end{itemize}\smallskip
 
-\noindent Następny krok to aktualizacja wszystkich efektów, najczę\'sciej przez zmianę ich pozycji. Efekty są opisane dokładniej w rozdziale \ref{chapter_graphics}.\newpage
+\noindent Następny krok to aktualizacja wszystkich efektów, najczę\'sciej przez zmianę ich pozycji. Efekty są opisane dokładniej w rozdziale \ref{ch:graphics}.\newpage
 \noindent Następnie aktualizują się przeciwnicy, czyli:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item zmieniają swoją pozycję
 	\item używają danych im broni
@@ -62,14 +62,14 @@ Każda klasa poziomu zawiera przypisane do niego: \begin{itemize}[topsep=0.2em, 
 \end{itemize}
 Każdy przeciwnik ma przypisane do siebie swoją pozycję, zachowanie, model statku oraz zazwyczaj broń lub bronie. Każda klasa typu przeciwnik ma także punkty uzyskane za pokonanie danego typu przeciwnika, jego maksymalną wytrzymało\'sć  oraz domy\'slny model używany przy wykrywaniu kolizji.\smallskip
 
-Kolejny krok aktualizuje pociski przeciwników, czyli zmienia ich położenie według zaprogramowanego ruchu, a także sprawdza czy nie zderzyły sie one z graczem. System kolizji jest opisany w rozdziale \ref{chapter_collission_detection}. Potem to samo jest powtarzane dla pocisków wystrzelonych przez gracza.
+Kolejny krok aktualizuje pociski przeciwników, czyli zmienia ich położenie według zaprogramowanego ruchu, a także sprawdza czy nie zderzyły sie one z graczem. System kolizji jest opisany w rozdziale \ref{ch:collission_detection}. Potem to samo jest powtarzane dla pocisków wystrzelonych przez gracza.
 
 Obiekty pocisków zawierają zazwyczaj informacje o położeniu, obrażeniach, sposobie ruchu i modelu używanym do zderzeń.\smallskip
 
 Ostatnim krokiem jest aktualizacja statku gracza. Sprawdzane jest tam, czy gracz wcisnął klawisze służące do przemieszczania statku (strzałki). Na końcu aktualizowany jest statek gracza, w tym to czy gracz używał broni (klawisz spacji), czy chłodnica statku się nie przegrzała oraz czy statkowi nie skończyły sie punkty wytrzymało\'sci, co wcze\'snie kończy grę.
 Obiekt typu Player jest jednym z bardziej skomplikowanych. Oprócz zwykłych danych takich jak wygląd, pozycja oraz model, zawiera także dokładniejsze informacje o broni. W przeciwieństwie do przeciwników jest też możliwo\'sć zmienić jego statek i broń, a na jego zachowanie oprócz samego sposobu poruszania się ma wpływ także sterowanie gracza. Ze względu na to że gracz widzi go cały czas jest jedną z najważniejszych czę\'sci gry.\bigskip
 
-Gdy wszystkie kroki zostały wykonane, jeden cykl silnika gry się kończy i gra czeka na następny. W międzyczasie między aktualizacjami obraz jest także przerysowywany, co jest opisane w rozdziale \ref{chapter_graphics}.\newpage
+Gdy wszystkie kroki zostały wykonane, jeden cykl silnika gry się kończy i gra czeka na następny. W międzyczasie między aktualizacjami obraz jest także przerysowywany, co jest opisane w rozdziale \ref{ch:graphics}.\newpage
 
 \begin{wrapfigure}{r}{\textwidth}
 	\centering

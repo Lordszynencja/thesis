@@ -1,24 +1,24 @@
 \chapter{Grafika}
 \thispagestyle{chapterBeginStyle}
-\label{chapter_graphics}
+\label{ch:graphics}
 
 Ten rozdział traktuje o wy\'swietlaniu obiektów na ekranie i tworzeniu efektów specjalnych oraz cząsteczkowych.
 
 Do wy\'swietlania grafiki w grze został użyty WebGL, rozwinięcie języka JavaScript, pozwalające wy\'wietlać obraz trójwymiarowy w przeglądarce. WebGL polega na używaniu shaderów, czyli programów wykonywanych na kartach graficznych. Język ten bazuje na języku OpenGL w wersji 2.0. WebGL jest tworzony przez Khronos Group, w skład którego wchodzą Mozilla, Apple, Google i Opera Software. W skład shaderów WebGL wchodzą dwa typy shaderów, vertex shader oraz fragment shader. Składnia jest podobna do języka C.\\
 Typy danych dostępne w shaderach to:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item bool, int i float, zachowujące się jak w zwykłym języku programowania
-	\item [bi]vec2/vec3/vec4 - wektory wielko\'sci 2, 3 oraz 4 dla poprzednich typów - odpowiednio b to bool, i to int a brak przedrostka to float
+	\item \lbrack bi\rbrack vec2/vec3/vec4 - wektory wielko\'sci 2, 3 oraz 4 dla poprzednich typów - odpowiednio b to bool, i to int a brak przedrostka to float
 	\item mat2/mat3/mat4 - macierze kwadratowe 2x2, 3x3, 4x4 ze zmiennymi typu float
 	\item sampler2D - zmienna umożliwiająca dostęp do tekstury 2D
 	\item samplerCube - zmienna umożliwająca dostęp do tekstury kostki
 \end{itemize}
-Można także używać struktur oraz tablicy zmiennych, jednak struktury nie mogą być używane z modyfikatorem varying. W shaderach można także używać wielu funkcji matematycznych i geometrycznych, są tu także dostępne proste operacje na macierzach i wektorach jak mnożenie lub dodawanie.
+Można także używać struktur oraz tablicy zmiennych. W shaderach można także używać wielu funkcji matematycznych i geometrycznych, są tu także dostępne proste operacje na macierzach i wektorach jak mnożenie lub dodawanie.
 
 Dostępne modyfikatory to:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item const - podobnie jak w języku C, jest to stała, tylko do odczytu
 	\item attribute - dostepne tylko w vertex shaderze - oznacza zmienną w której można umie\'scić dane przekazane do shadera (po podzieleniu)
 	\item uniform - podobnie jak modyfikator attribute, ten modyfikator pozwala umie\'scić w zmiennej dane z zewnątrz, jednak tutaj są one wspólne dla wszystkich przetwarzanych wierzchołków, nie są dzielone, zazwyczaj są one używane do przekazania macierzy obrotu, przesunięcia lub perspektywy, oraz dostępu do tekstur
-	\item varying - dane otrzymane z vertex shadera, które zostaną w przetworzone w rasteryzatorze i podane dalej do fragment shadera (można w nich umie\'scić np. pozycje wierzchołków na teksturze, a zostanie otrzymana pozycja dla każdego z pikseli w otrzymanym kształcie)
+	\item varying - dane otrzymane z vertex shadera, które zostaną w przetworzone w rasteryzatorze i podane dalej do fragment shadera (można w nich umie\'scić np. pozycje wierzchołków na teksturze, a zostanie otrzymana pozycja dla każdego z pikseli w otrzymanym kształcie), nie może być strukturą
 \end{itemize}
 
 Zazwyczaj jako zmienne z modyfikatorem uniform przekazywane są macierze przekształceń oraz \'swiatła, z modyfikatorem attribute przekazywane są dane do shadera, a modyfikatora varying używa się dla danych przekazywanych z vertex shadera do pixel shadera, na przykład pozycja tekstury. 
@@ -27,7 +27,7 @@ Specyfikacja języka WebGL jest opisana na stronie Khronos Group\cite{WebGLSpeci
 \noindent{\LARGE Vertex shader}\smallskip
 
 Vertex shader zajmuje się przetwarzaniem wierzchołków. Dane są przekazywane w całości, i dzielone na poszczególne wierzchołki automatycznie. Na przykład, je\'sli do wektora składającego się z 4 pól podamy ciąg długości 12, to zostanie on podzielony na dane dla 3 wierzchołków.
-Następnie procesor wydaje polecenia mówiące o tym które wierzchołki mają zostać przetworzone i jaki kształt ma zostać użyty. O tym które wierzchołki będą przetworzone decydujemy, wybierając pierwszy wierzchołek i ich ilo\'sć.
+Następnie procesor wydaje polecenia mówiące o tym które wierzchołki mają zostać przetworzone i jaki kształt ma zostać użyty. O tym które wierzchołki będą przetworzone decydujemy, wybierając pierwszy wierzchołek i ich ilo\'sć przy wywołaniu funkcji drawArrays(mode, first, count).
 Dostępne kształty to:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item punkty (każdy wierzchołek utworzy jeden punkt o zadanej wielko\'sci)
 	\item linie, w tym:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
@@ -53,7 +53,7 @@ We fragment shaderze zazwyczaj na podstawie pozycji z tekstury i innych danych, 
 
 \noindent Przykładowy kod prostego programu shader:\smallskip
 
-{\large Pixel shader}
+{\large Vertex shader}
 \begin{lstlisting}
 attribute vec2 position;
 attribute vec3 color;
@@ -86,12 +86,12 @@ void main(void) {
 
 \newpage\noindent{\LARGE Przykładowe shadery z efektami}
 
-Zaprezentuję tutaj kilka shaderów tworzących ciekawe efekty. Można ich użyc jako efekty nałożone na całą scenę lub tylko no niektóre jej elementy, czasami też efekty same w sobie tworzą ładną grafikę.
+Zaprezentuję tutaj kilka shaderów tworzących ciekawe efekty. Można ich użyć jako efekty nałożone na całą scenę lub tylko no niektóre jej elementy, czasami też efekty same w sobie tworzą ładną grafikę.
 Działają one w ten sposób, że kolor danego piksela jest obliczany jedynie na podstawie jego pozycji, używając funkcji matematycznych. Ze względu na działanie podzieliłem je na kształty oraz kolory.\bigskip
 
 \noindent{\Large Kształty}
 
-Kształty dają jako wynik liczbę, przez którą mnożomy kolor dla danego piksela, aby wzmocnić lub osłabić w nim kolor.\bigskip
+Kształty dają jako wynik liczbę, przez którą mnożymy kolor dla danego piksela, aby wzmocnić lub osłabić w nim kolor.\bigskip
 
 \begin{wrapfigure}{l}{0.55\textwidth}
 	\centering
@@ -176,7 +176,7 @@ Pierwszy krok to utworzenie buforów, które będą użyte do przesyłania danyc
 
 Następny krok to wykorzystanie obiektu gl do stworzenia pustego shader programu. Potem tworzymy dwa shadery (typu vertex i typu fragment), ustawiamy jako ich kody źródłowe kody, które wcze\'sniej przygotowali\'smy w zmiennej typu string, i kompilujemy je. Po kompilacji obu shaderów możemy je przypiąć do naszego shader programu. Potem shader program zostaje uruchomiony przez użycie na obiekcie gl funkcji linkProgram(program) oraz useProgram(program). W dowolnym momencie można zmienić aktualnie używany shader program, należy jednak pamiętać aby wypełnić też wtedy na nowo bufory przypisane do danego programu.
 
-Po uruchomieniu programu możemy wreszcie przypiąć bufory do zmiennych zawartych w naszych programach. Robi się to przez wyznaczenie danego bufora jako aktualnie używany, a następnie ustawienie mu wskaźnika na zmienną w dowolnym z shaderów. Przy przypisywaniu wskaźnika do bufora podaje się ile i jakie dane powinien on dostać na wej\'sciu. Na koniec należy jeszcze oznaczyć ten wskaźnik jako włączony.
+Po uruchomieniu programu możemy wreszcie przypiąć bufory do zmiennych zawartych w naszych programach. Robi się to przez wyznaczenie danego bufora jako aktualnie używany, a następnie ustawienie mu wskaźnika na zmienną w dowolnym z shaderów. Przy przypisywaniu wskaźnika do bufora podaje się ile i jakie dane powinien on dostać na wej\'sciu. Na koniec należy jeszcze oznaczyć ten wskaźnik jako aktywny.
 
 Należy zaznaczyć, że w ten sposób można przesyłać dane tylko do zmiennych z modyfikatorem attribute.
 
@@ -191,6 +191,27 @@ gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
 gl.enableVertexAttribArray(colorLocation);
 var scaleUniform = gl.getUniformLocation(shader, "scale");
 \end{lstlisting}
+
+\noindent Drugi kod prezentuje sposób utworzenia wskaźnika do tekstury:
+\begin{lstlisting}
+var textureBuffer = gl.createTexture();
+gl.uniform1i(gl.getUniformLocation(shader, "texture"), 0);
+var img = new Image();
+img.onload = (function(img) {
+	return function() {
+		gl.activeTexture(gl.TEXTURE0);
+		gl.bindTexture(gl.TEXTURE_2D, textureBuffer);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+	};
+})(img);
+img.src = "texture.png";
+\end{lstlisting}
+
+Na początku zostaje stworzony bufor na teksturę, podobnie jak w przypadku zwykłego bufora. Następnie do zmiennej texture typu sampler2D zostaje przypisana warto\'sć 0, czyli pierwsza tekstura. na końcu zostaje utworzony obiekt typu Image, który po wczytaniu zadanego obrazka wrzuci go do bufora i ustawi wła\'sciwo\'sci tekstury. Około 85\% komputerów wspiera obecnie 16 jednostek tekstur. Ponadto 99,6\% komputerów wspiera tekstury o wielko\'sci maksymalnej co najmniej 4096x4096, a 50\% wspiera największą obecnie dostępną wielko\'sć tekstur - 16384x16384. Należy też pamiętać, że w jednej teksturze można zawrzeć wiele różnych obrazów obiektów, do których będziemy się odwoływać przez pozycję na teksturze, dzięki temu tekstury wystarczy zazwyczaj wczytać tylko raz.
 
 Ostatni krok w przygotowaniu shadera do działania to ustawienie zmiennych takich jak:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item używanie bufora głęboko\'sci - wtedy obiekty rysowane na ekranie nie mogą być nadrysowane przez te, które są za nimi
@@ -210,5 +231,25 @@ gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([1,1,1, 0,0,0]), gl.STREAM_DRAW);
 \end{lstlisting}
 
-Ponieważ dane dla colorBuffer-a to 6 liczb, a jest on przypisany do zmiennej składającej się z 3 liczb, zostaną one podzielone na dane dla dwóch wierzchołków. 
+Ponieważ dane dla colorBuffer-a to 6 liczb, a jest on przypisany do zmiennej składającej się z 3 liczb, zostaną one podzielone na dane dla dwóch wierzchołków.
+
+Po przygotowaniu danych dla karty graficznej możemy wreszcie narysować scenę. Robi się to przez wywoływanie funkcji drawArrays, opisanej wcze\'sniej w tym rozdziale.\bigskip
+
+\noindent{\LARGE \'Swiatło}
+
+Do shaderów zostały dopisane funkcje obsługujące \'swiatło w grze. W projekcie zostały użyte 2 typy \'swiateł: punktowe, czyli \'swiecący punkt, oraz \'swiecąca linia, używane np. przy laserach.
+
+Dane \'swiateł są przekazywane do shadera w zmiennych typu uniform. Dla każdego ze \'swiateł zostają przekazane odpowiednie dla niego dane:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+	\item dla \'swiateł punktowych zostają przekazane pozycja \'swiatła, kolor \'swiatła i kierunek oraz szeroko\'sć stożka \'swiatła
+	\item dla \'swiatła będącego linią przekazywane są dane o kolorze, początku, długo\'sci i kącie pod jakim znajduje się prosta zawierająca dane \'swiatło
+\end{itemize}
+
+Na podstawie tych danych zostaje obliczony kolor \'swiatła padającego na dany obiekt w danym miejscu. Obliczenia zachodzą we fragment shaderze, dla każdego piksela osobno. Po policzeniu wszystkich \'swiateł zostaje dodane także \'swiatło otoczenia, o stałej warto\'sci niezależnie od położenia.
+
+Ostateczne \'swiatło padające na dany punkt zostaje na koniec przemnożone przez kolor danego fragmentu, aby otrzymać końcowy kolor fragmentu.\bigskip
+
+\noindent{\LARGE Shadery w grze}\smallskip
+
+W grze istnieje kilka shaderów przeznaczonych do różnych zadań. Niektóre z nich służą do wy\'swietlania zwykłych tekstur, a inne do wy\'swietlania efektów specjalnych. Shadery są ułożone w odpowiedniej kolejno\'sci, tak aby najpierw rysowały się obiekty będące pod spodem, a nastepnie te będące na wierzchu.
+
 \cleardoublepage
