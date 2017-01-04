@@ -2,6 +2,13 @@
 \thispagestyle{chapterBeginStyle}
 \label{ch:outro}
 
-Podsumowując...
+Podsumowując, główne elementy zawarte w grze to logika, odpowiadająca za to w jaki sposób gra się zachowuje, czy statki latają jak trzeba, a bronie wystrzeliwują pociski, dwuetapowy system kolizji, który dba o to, aby szybko i skutecznie wykrywać kolizje, grafika, która wy\'swietla wszystkie informacje na ekranie i sprawia że gra się przyjemniej, oraz muzyka, dzięki której obiekty na ekranie nie są tylko zbiorami pikseli.\bigskip
 
+Logika gry obsługuje statek gracza, który można kontrolować, statki przeciwników, wystrzelone pociski, poziomy, tło oraz GUI. Dzięki podziałowi, aby dodać do gry nowego przeciwnika lub broń, wystarczy dodać odpowiadającą mu klasę i przypisać go do którego\'s z poziomów w przypadku przeciwnika, lub jakiego\'s statku dla broni. Nowy poziom albo menu można dodać równie łatwo, dzięki czemu gra ma możliwo\'sć łatwej rozbudowy. System wykrywania kolizji natomiast może szybko sprawdzić czy dowolna para obiektów ze sobą koliduje.\bigskip
+
+Grafika także jest przygotowana do łatwego rozszerzania i dodawania nowych efektów lub sposobów wy\'swietlania obiektów. Dodatkowo jeden obiekt obsługuje całą stronę graficzną i jest interfejsem pomiędzy logiką gry a shaderami.\bigskip
+
+Muzyka jest przygotowana do odtwarzania wielu efektów naraz, a także obsługiwania muzyki bez nakładania się jej.\bigskip
+
+Ostatecznie, gra jest złożona z modułów i łatwa do rozbudowywania lub modyfikowania, a dzięki użyciu technologii WebGL i JavaScript, można ją uruchomić na prawie każdym nowoczesnym komputerze.
 \cleardoublepage

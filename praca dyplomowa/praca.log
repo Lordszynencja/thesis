@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.16)  2 JAN 2017 21:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.3.16)  4 JAN 2017 18:34
 entering extended mode
 **praca.tex
 (praca.tex
@@ -854,7 +854,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip114
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 123.
-) (praca.aux)
+) (praca.aux
+
+LaTeX Warning: Label `WebGLFundamentals' multiply defined.
+
+)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
@@ -872,8 +876,7 @@ LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Try loading font information for OT4+lmr on input line 5.
-
-(D:\Programy\MiKTeX\tex\latex\lm\ot4lmr.fd
+ (D:\Programy\MiKTeX\tex\latex\lm\ot4lmr.fd
 File: ot4lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (D:\Programy\MiKTeX\tex\context\base\supp-pdf.mkii
@@ -1260,14 +1263,14 @@ line 147.
 Rozdzia\l  5.
 [25
 
-] [26] <images/simple_shader.png, id=293, 1003.75pt x 1003.75pt>
+] [26] <images/simple_shader.png, id=292, 1003.75pt x 1003.75pt>
 File: images/simple_shader.png Graphic file (type png)
 
 <use images/simple_shader.png>
 Package pdftex.def Info: images/simple_shader.png used on input line 83.
 (pdftex.def)             Requested size: 472.03123pt x 472.03825pt.
  [27 <./images/simple_shader.png>]
-<images/shape_rounded_square.png, id=310, 903.375pt x 903.375pt>
+<images/shape_rounded_square.png, id=309, 903.375pt x 903.375pt>
 File: images/shape_rounded_square.png Graphic file (type png)
 
 <use images/shape_rounded_square.png>
@@ -1275,37 +1278,28 @@ Package pdftex.def Info: images/shape_rounded_square.png used on input line 98.
 
 (pdftex.def)             Requested size: 118.0078pt x 118.00803pt.
 
-<images/shape_circles.png, id=311, 903.375pt x 903.375pt>
+<images/shape_circles.png, id=310, 903.375pt x 903.375pt>
 File: images/shape_circles.png Graphic file (type png)
 
 <use images/shape_circles.png>
 Package pdftex.def Info: images/shape_circles.png used on input line 99.
 (pdftex.def)             Requested size: 118.0078pt x 118.00803pt.
 
-Underfull \hbox (badness 1331) in paragraph at lines 109--110
-[]\OT4/lmr/m/n/10 Ten efekt uzy-skuje si¦ przez po-mno-»e-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
-<images/shape_waved_circle.png, id=312, 903.375pt x 903.375pt>
+<images/shape_waved_circle.png, id=311, 903.375pt x 903.375pt>
 File: images/shape_waved_circle.png Graphic file (type png)
 
 <use images/shape_waved_circle.png>
 Package pdftex.def Info: images/shape_waved_circle.png used on input line 125.
 (pdftex.def)             Requested size: 141.61081pt x 141.60687pt.
 
-<images/shape_wave.png, id=313, 903.375pt x 903.375pt>
+<images/shape_wave.png, id=312, 903.375pt x 903.375pt>
 File: images/shape_wave.png Graphic file (type png)
 
 <use images/shape_wave.png>
 Package pdftex.def Info: images/shape_wave.png used on input line 126.
 (pdftex.def)             Requested size: 141.61081pt x 141.60687pt.
 
-<images/shape_star.png, id=314, 903.375pt x 903.375pt>
+<images/shape_star.png, id=313, 903.375pt x 903.375pt>
 File: images/shape_star.png Graphic file (type png)
 
 <use images/shape_star.png>
@@ -1313,27 +1307,27 @@ Package pdftex.def Info: images/shape_star.png used on input line 127.
 (pdftex.def)             Requested size: 141.61081pt x 141.60687pt.
  [28 <./images/shape_rounded_square.png> <./images/shape_circles.png> <./images
 /shape_waved_circle.png> <./images/shape_wave.png> <./images/shape_star.png>]
-<images/color_rainbow.png, id=326, 903.375pt x 903.375pt>
+<images/color_rainbow.png, id=325, 903.375pt x 903.375pt>
 File: images/color_rainbow.png Graphic file (type png)
 
 <use images/color_rainbow.png>
 Package pdftex.def Info: images/color_rainbow.png used on input line 146.
 (pdftex.def)             Requested size: 231.2979pt x 231.28802pt.
 
-<images/color_disco.png, id=327, 903.375pt x 903.375pt>
+<images/color_disco.png, id=326, 903.375pt x 903.375pt>
 File: images/color_disco.png Graphic file (type png)
 
 <use images/color_disco.png>
 Package pdftex.def Info: images/color_disco.png used on input line 147.
 (pdftex.def)             Requested size: 231.2979pt x 231.28802pt.
 
-<images/effect0.png, id=328, 903.375pt x 903.375pt>
+<images/effect0.png, id=327, 903.375pt x 903.375pt>
 File: images/effect0.png Graphic file (type png)
  <use images/effect0.png>
 Package pdftex.def Info: images/effect0.png used on input line 154.
 (pdftex.def)             Requested size: 200.6147pt x 200.604pt.
 
-<images/effect1.png, id=329, 903.375pt x 903.375pt>
+<images/effect1.png, id=328, 903.375pt x 903.375pt>
 File: images/effect1.png Graphic file (type png)
  <use images/effect1.png>
 Package pdftex.def Info: images/effect1.png used on input line 155.
@@ -1341,25 +1335,25 @@ Package pdftex.def Info: images/effect1.png used on input line 155.
 
 [29 <./images/color_rainbow.png> <./images/color_disco.png> <./images/effect0.p
 ng> <./images/effect1.png>]
-<images/effect2.png, id=339, 903.375pt x 903.375pt>
+<images/effect2.png, id=338, 903.375pt x 903.375pt>
 File: images/effect2.png Graphic file (type png)
  <use images/effect2.png>
 Package pdftex.def Info: images/effect2.png used on input line 160.
 (pdftex.def)             Requested size: 233.65315pt x 233.64516pt.
 
-<images/effect3.png, id=340, 903.375pt x 903.375pt>
+<images/effect3.png, id=339, 903.375pt x 903.375pt>
 File: images/effect3.png Graphic file (type png)
  <use images/effect3.png>
 Package pdftex.def Info: images/effect3.png used on input line 161.
 (pdftex.def)             Requested size: 233.65315pt x 233.64516pt.
 
-<images/effect4.png, id=341, 903.375pt x 903.375pt>
+<images/effect4.png, id=340, 903.375pt x 903.375pt>
 File: images/effect4.png Graphic file (type png)
  <use images/effect4.png>
 Package pdftex.def Info: images/effect4.png used on input line 162.
 (pdftex.def)             Requested size: 233.65315pt x 233.64516pt.
 
-<images/effect5.png, id=342, 903.375pt x 903.375pt>
+<images/effect5.png, id=341, 903.375pt x 903.375pt>
 File: images/effect5.png Graphic file (type png)
  <use images/effect5.png>
 Package pdftex.def Info: images/effect5.png used on input line 163.
@@ -1378,7 +1372,7 @@ Overfull \hbox (1.97359pt too wide) in paragraph at lines 208--209
  []
 
 [31]
-Overfull \hbox (13.97371pt too wide) in paragraph at lines 231--232
+Overfull \hbox (13.97371pt too wide) in paragraph at lines 233--234
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
@@ -1410,12 +1404,17 @@ Rozdzia\l  7.
 
 ]) (bibliografia.tex [37
 
-]
-<images/wppt-logo.png, id=456, 75.8835pt x 66.4884pt>
+pdfTeX warning (ext4): destination with the same identifier (name{cite.WebGLFun
+damentals}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.55 \cleardoublepage
+                     ] <images/wppt-logo.png, id=464, 75.8835pt x 66.4884pt>
 File: images/wppt-logo.png Graphic file (type png)
 
 <use images/wppt-logo.png>
-Package pdftex.def Info: images/wppt-logo.png used on input line 35.
+Package pdftex.def Info: images/wppt-logo.png used on input line 55.
 (pdftex.def)             Requested size: 23.603pt x 20.68018pt.
  [38
 
@@ -1427,13 +1426,17 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 20.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 20.
 Package rerunfilecheck Info: File `praca.out' has not changed.
 (rerunfilecheck)             Checksum: 300F4F059444598DAE78810308BD06A0;355.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
  ) 
 Here is how much of TeX's memory you used:
- 12452 strings out of 493698
- 176759 string characters out of 3148062
- 316877 words of memory out of 3000000
- 15282 multiletter control sequences out of 15000+200000
+ 12460 strings out of 493698
+ 176903 string characters out of 3148062
+ 316063 words of memory out of 3000000
+ 15286 multiletter control sequences out of 15000+200000
  55175 words of font info for 51 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  34i,18n,44p,1383b,1293s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1454,9 +1457,9 @@ fonts/type1/public/lm/lmro10.pfb><D:/Programy/MiKTeX/fonts/type1/public/lm/lmsy
 /fonts/type1/public/pl/plmi10.pfb><D:/Programy/MiKTeX/fonts/type1/public/pl/plr
 10.pfb><D:/Programy/MiKTeX/fonts/type1/public/pl/plr7.pfb><D:/Programy/MiKTeX/f
 onts/type1/public/pl/plsy10.pfb>
-Output written on praca.pdf (42 pages, 5266876 bytes).
+Output written on praca.pdf (42 pages, 5269953 bytes).
 PDF statistics:
- 569 PDF objects out of 1000 (max. 8388607)
- 199 named destinations out of 1000 (max. 500000)
+ 577 PDF objects out of 1000 (max. 8388607)
+ 203 named destinations out of 1000 (max. 500000)
  217 words of extra memory for PDF output out of 10000 (max. 10000000)
 

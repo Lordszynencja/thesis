@@ -81,13 +81,13 @@ void main(void) {
 \begin{figure}[h]
 	\centering
 	\noindent\includegraphics[width=\textwidth]{simple_shader}
-	\caption{Wynik narysowania trójkąta, dwóch linii i punktu wielko\'sci 10 w przykładowym shaderze (szeroko\'sć punktu w oryginale to 10 pikseli)}
+	\caption{Wynik narysowania trójkąta, dwóch linii i punktu wielko\'sci 10 w przykładowym shaderze (szeroko\'sć punktu na ekranie to 10 pikseli)}
 \end{figure}\vfill
 
 \newpage\noindent{\LARGE Przykładowe shadery z efektami}
 
 Zaprezentuję tutaj kilka shaderów tworzących ciekawe efekty. Można ich użyć jako efekty nałożone na całą scenę lub tylko no niektóre jej elementy, czasami też efekty same w sobie tworzą ładną grafikę.
-Działają one w ten sposób, że kolor danego piksela jest obliczany jedynie na podstawie jego pozycji, używając funkcji matematycznych. Ze względu na działanie podzieliłem je na kształty oraz kolory.\bigskip
+Działają one w ten sposób, że kolor danego piksela jest obliczany jedynie na podstawie jego pozycji, używając funkcji matematycznych. Ze względu na działanie zostały podzielone na kształty oraz kolory.\bigskip
 
 \noindent{\Large Kształty}
 
@@ -106,7 +106,7 @@ Uzyskuje się go przez obliczenie odległo\'sci za pomocą miary używającej in
 
 \noindent{\large Rozchodzące się koła}
 
-Ten efekt uzyskuje się przez pomnożenie odległo\'sci od \'srodka przez jaką\'s stałą, dodanie aktualnego czasu, a następnie użycie na wyniku funkcji okresowej, takiej jak sinus. Aby uzyskać efekt perpektywy i tunelu można też użyć logarytmu z odległo\'sci.\smallskip\\
+Ten efekt uzyskuje się przez pomnożenie odległo\'sci od \'srodka przez jaką\'s stałą, dodanie aktualnego czasu, a następnie użycie na wyniku funkcji okresowej, takiej jak sinus. Aby uzyskać efekt perpektywy i tunelu można też użyć logarytmu z odległo\'sci.\smallskip
 
 \noindent{\large Pofalowane koło}
 
@@ -190,7 +190,7 @@ var colorLocation = gl.getAttribLocation(shader, "color");
 gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
 gl.enableVertexAttribArray(colorLocation);
 var scaleUniform = gl.getUniformLocation(shader, "scale");
-\end{lstlisting}
+\end{lstlisting}\bigskip
 
 \noindent Drugi kod prezentuje sposób utworzenia wskaźnika do tekstury:
 \begin{lstlisting}
@@ -211,15 +211,17 @@ img.onload = (function(img) {
 img.src = "texture.png";
 \end{lstlisting}
 
-Na początku zostaje stworzony bufor na teksturę, podobnie jak w przypadku zwykłego bufora. Następnie do zmiennej texture typu sampler2D zostaje przypisana warto\'sć 0, czyli pierwsza tekstura. na końcu zostaje utworzony obiekt typu Image, który po wczytaniu zadanego obrazka wrzuci go do bufora i ustawi wła\'sciwo\'sci tekstury. Około 85\% komputerów wspiera obecnie 16 jednostek tekstur. Ponadto 99,6\% komputerów wspiera tekstury o wielko\'sci maksymalnej co najmniej 4096x4096, a 50\% wspiera największą obecnie dostępną wielko\'sć tekstur - 16384x16384. Należy też pamiętać, że w jednej teksturze można zawrzeć wiele różnych obrazów obiektów, do których będziemy się odwoływać przez pozycję na teksturze, dzięki temu tekstury wystarczy zazwyczaj wczytać tylko raz.
+Na początku zostaje stworzony bufor na teksturę, podobnie jak w przypadku zwykłego bufora. Następnie do zmiennej texture typu sampler2D zostaje przypisana warto\'sć 0, czyli pierwsza tekstura. na końcu zostaje utworzony obiekt typu Image, który po wczytaniu zadanego obrazka wrzuci go do bufora i ustawi wła\'sciwo\'sci tekstury. Około 85\% komputerów wspiera obecnie 16 jednostek tekstur. Ponadto 99,6\% komputerów wspiera tekstury o wielko\'sci maksymalnej co najmniej 4096x4096, a 50\% wspiera największą obecnie dostępną wielko\'sć tekstur - 16384x16384.
 
-Ostatni krok w przygotowaniu shadera do działania to ustawienie zmiennych takich jak:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
+Należy też pamiętać, że w jednej teksturze można zawrzeć wiele różnych obrazów obiektów, do których będziemy się odwoływać przez pozycję na teksturze. Dzięki temu tekstury wystarczy zazwyczaj wczytać tylko raz, przy inicjalizacji.\newpage
+
+\noindent Ostatni krok w przygotowaniu shadera do działania to ustawienie zmiennych takich jak:\begin{itemize}[topsep=0.2em, itemsep=0.5em, partopsep=0em, parsep=0em]
 	\item używanie bufora głęboko\'sci - wtedy obiekty rysowane na ekranie nie mogą być nadrysowane przez te, które są za nimi
 	\item funkcja głęboko\'sci - ustawienie testu głęboko\'sci (można na przykład ustawić, aby obiekt będący głębiej nadrysowywał te będące bliżej ekranu)
 	\item viewport - ustawienie obszaru, na którym będziemy rysować
 	\item używanie mieszania kolorów - decyduje czy kanał alfa będzie używany, aby połączyć kolory przy obiektach półprzezroczystych (je\'sli nie, będą one całkowicie wypełniać piksel)
 	\item funkcja mieszania kolorów - decyduje w jaki sposób kolory będą mieszane
-	\item stencil test - dodatkowy test, wykonywany dla każdego piksela w danej figurze, polega na porównaniu warto\'sci z bufora z stałą za pomocą danej funkcji, mozna go użyć do nałożenia maski na wy\'swietlane elementy
+	\item stencil test - dodatkowy test, wykonywany dla każdego piksela w danej figurze, polega na porównaniu warto\'sci z bufora ze stałą za pomocą danej funkcji, można go użyć do nałożenia maski na wy\'swietlane elementy
 \end{itemize}
 
 Po przygotowaniu shader programu można użyć go do wy\'swietlania nim obiektów na ekranie. Aby wy\'swietlić co\'s, trzeba jednak włożyć dane do odpowiednich buforów. Aby włożyć dane, ponownie uaktywniamy dany bufor funkcją bindBuffer, a następnie używamy funkcji bufferData. Argumentem tej funkcji są dane, które zostaną podzielone i przypisane do poszczególnych wierzchołków. Podobnie zapisuje się dane w zmiennych typu uniform, używając wcze\'sniej przygotowanego wskaźnika.
@@ -250,6 +252,6 @@ Ostateczne \'swiatło padające na dany punkt zostaje na koniec przemnożone prz
 
 \noindent{\LARGE Shadery w grze}\smallskip
 
-W grze istnieje kilka shaderów przeznaczonych do różnych zadań. Niektóre z nich służą do wy\'swietlania zwykłych tekstur, a inne do wy\'swietlania efektów specjalnych. Shadery są ułożone w odpowiedniej kolejno\'sci, tak aby najpierw rysowały się obiekty będące pod spodem, a nastepnie te będące na wierzchu.
+W grze istnieje kilka shaderów przeznaczonych do różnych zadań. Niektóre z nich służą do wy\'swietlania zwykłych tekstur, a inne do wy\'swietlania efektów specjalnych. Shadery są ułożone w odpowiedniej kolejno\'sci, tak aby najpierw rysowały się obiekty będące pod spodem, a nastepnie te będące na wierzchu. Wszystkie shadery znajdują się w tablicy, aby był do nich łatwy dostęp. Wszystkie shadery są obsługiwane przez obiekt klasy Graphics. Obiekt ten inicjalizuje wszystkie shadery, aktualizuje je, a także zawiera funkcje do przekazywania odpowiednich danych do każdego z shaderów w łatwy sposób. Dodatkowo obsługuje on też wysyłanie danych o \'swiatłach do każdego shadera, który je uwzględnia.
 
 \cleardoublepage
